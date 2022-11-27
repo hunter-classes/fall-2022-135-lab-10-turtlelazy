@@ -17,6 +17,10 @@ int main()
 
     TimeSlot next = scheduleAfter(morning,movie2);
     std::cout << getTimeSlot(next) << "\n";
+    Movie movie3 = {"One Piece", ACTION, 116};
+    TimeSlot inbetween = {movie3, {12, 15}};
+    std::cout << getTimeSlot(inbetween) << "\n";
 
+    std::cout << "The previous two movies overlap: " << timeOverlap(next,inbetween) << "\n";
     return 0;
 }

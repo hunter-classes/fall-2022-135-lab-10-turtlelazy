@@ -4,6 +4,7 @@
 #include "movie.h"
 #include "timeslot.h"
 #include <string>
+#include <cmath>
 
 int minutesSinceMidnight(Time time){
     return time.h * 60 + time.m;
@@ -67,4 +68,17 @@ std::string getTimeSlot(TimeSlot ts){
 TimeSlot scheduleAfter(TimeSlot ts, Movie nextMovie){
     TimeSlot next = {nextMovie,addMinutes(ts.startTime,ts.movie.duration)};
     return next;
+}
+
+TimeSlot earlierSlot(TimeSlot ts1, TimeSlot ts2){
+    if(minutesUntil(ts1.startTime,ts2.startTime) < 0){
+        return ts2;
+    }
+    return ts1;
+}
+bool timeOverlap(TimeSlot ts1, TimeSlot ts2)
+{
+    int earlierMoveDuration = earlierSlot(ts1,ts2).movie.duration;
+    int timeBetween = abs(minutesUntil(ts1.startTime, ts2.startTime));
+    return earlierMoveDuration > timeBetween;
 }
