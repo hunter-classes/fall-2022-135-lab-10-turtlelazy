@@ -78,7 +78,7 @@ TimeSlot earlierSlot(TimeSlot ts1, TimeSlot ts2){
 }
 bool timeOverlap(TimeSlot ts1, TimeSlot ts2)
 {
-    int earlierMoveDuration = earlierSlot(ts1,ts2).movie.duration;
+    int earlierMovieDuration = earlierSlot(ts1,ts2).movie.duration;
     int timeBetween = abs(minutesUntil(ts1.startTime, ts2.startTime));
-    return earlierMoveDuration > timeBetween;
+    return earlierMovieDuration > timeBetween;
 }
