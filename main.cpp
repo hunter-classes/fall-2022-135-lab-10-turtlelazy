@@ -13,5 +13,10 @@ int main()
     Movie movie1 = {"Back to the Future", COMEDY, 116};
     TimeSlot morning = {movie1, {9, 15}};
     std::cout << getTimeSlot(morning) << "\n";
+    Movie movie2 = {"Black Panther", ACTION, 134};
+
+    TimeSlot next = scheduleAfter(morning,movie2);
+    std::cout << getTimeSlot(next) << "\n";
+
     return 0;
 }

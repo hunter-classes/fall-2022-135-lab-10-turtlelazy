@@ -63,3 +63,8 @@ std::string getTimeSlot(TimeSlot ts){
 
     return output;
 }
+
+TimeSlot scheduleAfter(TimeSlot ts, Movie nextMovie){
+    TimeSlot next = {nextMovie,addMinutes(ts.startTime,ts.movie.duration)};
+    return next;
+}
